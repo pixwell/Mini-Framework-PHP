@@ -1,0 +1,12 @@
+/nbproject/*
+/node_modules
+/log
+/vendor
+error.log
+access.log
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+ubuntu-xenial-16.04-cloudimg-console.log
