@@ -1,0 +1,17 @@
+{
+    "name": "pix/php_framework",
+    "description": "Desenvolvimento de mini framework PHP personalizado com fins didáticos.",
+    "require": {
+        "phpmailer/phpmailer": "^6.0"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "^1.8"
+    },
+    "authors": [
+        {
+            "name": "Marcia Silva",
+            "email": "contato.pix@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
