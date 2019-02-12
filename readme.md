@@ -1,4 +1,5 @@
-##Mini Framework PHP
+Mini Framework PHP
+==================
 
 Desenvolvimento de mini framework PHP personalizado com fins didáticos.
 
