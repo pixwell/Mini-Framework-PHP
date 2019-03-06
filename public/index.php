@@ -1,1 +1,3 @@
-<h1>Hello world!</h1>
+<?php 
+
+require __DIR__ . '/../vendor/autoload.php';
