@@ -17,5 +17,7 @@ class Router
         $url = filter_input(INPUT_SERVER, REQUEST_URI);
         return parse_url($url, PHP_URL_PATH);
     }
-    private function run(){}
+    private function run(){
+        echo $this->getUrl();
+    }
 }
