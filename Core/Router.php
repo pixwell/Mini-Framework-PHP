@@ -9,6 +9,7 @@ class Router
     public function __construct(array $routeParam)
     {
         $this->routes = $routeParam;
+        $this->run();
     }
     
     private function getUrl()
@@ -16,4 +17,5 @@ class Router
         $url = filter_input(INPUT_SERVER, REQUEST_URI);
         return parse_url($url, PHP_URL_PATH);
     }
+    private function run(){}
 }
