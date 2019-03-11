@@ -35,13 +35,11 @@ class Router
     {
         $obj = new \stdClass();
         
-        foreach ($_GET as $key => $value) {
-            $obj->get->$key = $value;
-        }
-        
-        foreach ($_POST as $key => $value) {
-            $obj->post->$key = $value;
-        }
+        $get = (object)$_GET;
+        $post = (object)$_POST;
+
+        $obj->get = $get;
+        $obj->post = $post;
         
         return $obj;
     }
