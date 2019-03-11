@@ -8,7 +8,7 @@ class Router
     
     public function __construct(array $routeParam)
     {
-        $this->routes = $routeParam;
+        $this->mapRoute($routeParam);
         $this->run();
     }
     
@@ -18,17 +18,26 @@ class Router
         return parse_url($url, PHP_URL_PATH);
     }
     
+    private function mapRoute($routes){
+        //Recebendo o table routing
+        foreach ( $routes as $route ){
+            //Explodindo o Controller@action
+            $controllerAction = explode('@', $route[1]);
+            //Criando array com rota, Controller e Action
+            $mapItem = [ $route[0], $controllerAction[0], $controllerAction[1] ];
+            //Incluindo cada item em um array
+            $mappedRoutes[] = $mapItem;
+        }
+        $this->routes = $mappedRoutes;
+    }
+
     private function run(){
         //URL do browser
         $urlArray = $this->pathFiltered( $this->getUrl() );
-        print_r($urlArray);
-        echo '<br>';
-        
+
         foreach ($this->routes as $route) {
             $routeArray = $this->pathFiltered( $route[0] );
-            echo '<br>';
-            print_r($routeArray);
-            
+
             for($i = 0; $i < count($routeArray); $i++){
                 if ((strpos($routeArray[$i], "{") !== false) && (count($urlArray) == count($routeArray))) {
                     $routeArray[$i] = $urlArray[$i];
@@ -38,11 +47,7 @@ class Router
             }
         }
         if (implode($urlArray, '/') == $route[0]) {
-            echo '<br> Válido';
-            echo '<br> <b>URL:</b> ' . implode($urlArray, '/') . ' <b>Rota:</b> ' . $route[0];
-        } else {
-            echo '<br> INválido';
-            echo '<br> <b>URL:</b> ' . implode($urlArray, '/') . ' <b>Rota:</b> ' . $route[0];
+            echo '<b>Rota:</b> ' . $route[0] . ' <br><b>Controller:</b> ' . $route[1] . ' <br><b>Action:</b> ' . $route[2];
         }
     }
     
