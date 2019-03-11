@@ -52,8 +52,6 @@ class Router
                 $controller = $route[1];
                 $action = $route[2];
                 break;
-            } else {
-                echo '<br> não encontrado';
             }
         }
         
