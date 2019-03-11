@@ -85,6 +85,8 @@ class Router
                 default:
                     $dispatcher->$action($this->getRequest());
             }
+        } else {
+            echo 'Página não encontrada';
         }
     }
     
