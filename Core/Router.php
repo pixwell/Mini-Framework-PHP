@@ -30,6 +30,21 @@ class Router
         }
         $this->routes = $mappedRoutes;
     }
+    
+    private function getRequest()
+    {
+        $obj = new \stdClass();
+        
+        foreach ($_GET as $key => $value) {
+            $obj->get->$key = $value;
+        }
+        
+        foreach ($_POST as $key => $value) {
+            $obj->post->$key = $value;
+        }
+        
+        return $obj;
+    }
 
     private function run(){
         //URL do browser
@@ -59,16 +74,16 @@ class Router
             $dispatcher = Container::newController($controller);
             switch( count($param) ){
                 case 1: 
-                    $dispatcher->$action($param[0]);
+                    $dispatcher->$action($param[0], $this->getRequest());
                     break;
                 case 2: 
-                    $dispatcher->$action($param[0], $param[1]);
+                    $dispatcher->$action($param[0], $param[1], $this->getRequest());
                     break;
                 case 3: 
-                    $dispatcher->$action($param[0], $param[1], $param[3]);
+                    $dispatcher->$action($param[0], $param[1], $param[3], $this->getRequest());
                     break;
                 default:
-                    $dispatcher->$action();
+                    $dispatcher->$action($this->getRequest());
             }
         }
     }
