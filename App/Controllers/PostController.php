@@ -9,8 +9,11 @@ class PostController
         echo 'Post Controller, Action index';
     }
     
-    public function show($id)
+    public function show($id, $request)
     {
         echo 'Post ' . $id;
+        echo '<pre>';
+        print_r($request);
+        echo '</pre>';
     }
 }
