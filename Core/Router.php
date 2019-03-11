@@ -47,7 +47,9 @@ class Router
             }
         }
         if (implode($urlArray, '/') == $route[0]) {
-            echo '<b>Rota:</b> ' . $route[0] . ' <br><b>Controller:</b> ' . $route[1] . ' <br><b>Action:</b> ' . $route[2] . ' <br><b>Param:</b> ' . $param[0];
+            echo '<b>Rota:</b> ' . $route[0] . ' <br><b>Controller:</b> ' . $route[1] . ' <br><b>Action:</b> ' . $route[2];
+            echo ' <br><b>Param:</b> ';
+            print_r($param);
         }
     }
     
