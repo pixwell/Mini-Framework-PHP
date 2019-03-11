@@ -57,7 +57,19 @@ class Router
         
         if($found){
             $dispatcher = Container::newController($controller);
-            $dispatcher->$action();
+            switch( count($param) ){
+                case 1: 
+                    $dispatcher->$action($param[0]);
+                    break;
+                case 2: 
+                    $dispatcher->$action($param[0], $param[1]);
+                    break;
+                case 3: 
+                    $dispatcher->$action($param[0], $param[1], $param[3]);
+                    break;
+                default:
+                    $dispatcher->$action();
+            }
         }
     }
     
