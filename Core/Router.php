@@ -54,7 +54,8 @@ class Router
         }
         
         if($found){
-            
+            $dispatcher = Container::newController($controller);
+            $dispatcher->$action();
         }
     }
     
