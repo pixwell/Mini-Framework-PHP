@@ -34,7 +34,7 @@ class Router
     private function run(){
         //URL do browser
         $urlArray = $this->pathFiltered( $this->getUrl() );
-
+        
         foreach ($this->routes as $route) {
             $routeArray = $this->pathFiltered( $route[0] );
 
@@ -45,11 +45,15 @@ class Router
                 }
                 $route[0] = implode($routeArray, '/');
             }
-            if (implode($urlArray, '/') == $route[0]) {
+            $url = empty($urlArray) ? '/' : implode($urlArray, '/');
+                                    
+            if ($url == $route[0]) {
                 $found = true;
                 $controller = $route[1];
                 $action = $route[2];
                 break;
+            } else {
+                echo '<br> não encontrado';
             }
         }
         
