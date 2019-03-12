@@ -9,6 +9,6 @@ class HomeController extends BaseController
     public function index()
     {
         $this->view->nome = 'Fulano';
-        $this->renderView('home/index');
+        $this->renderView('home/index', 'layout');
     }
 }
