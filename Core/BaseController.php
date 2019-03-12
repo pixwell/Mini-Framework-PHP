@@ -6,6 +6,7 @@ abstract class BaseController
 {
     protected $view;
     private $viewPath;
+    private $baseLayout;
 
     public function __construct()
     {
@@ -16,10 +17,16 @@ abstract class BaseController
      * Define o caminho da view
      * @param string $path
      */
-    protected function renderView($path)
+    protected function renderView($path, $baseLayoutPath = null)
     {
         $this->viewPath = $path;
-        $this->contentView();
+        $this->baseLayout = $baseLayoutPath;
+        
+        if($baseLayoutPath){
+            $this->contentLayoutBase();
+        } else {            
+            $this->contentView();
+        }
     }
     
     /**
@@ -30,6 +37,16 @@ abstract class BaseController
             require __DIR__ . '/../App/Views/' . $this->viewPath . '.phtml';
         } else {
             echo 'Erro: arquivo de View não existe.';
+        }
+    }
+    /**
+     * Traz o conteudo do layout base
+     */
+    protected function contentLayoutBase() {
+        if( file_exists(__DIR__ . '/../App/Views/' . $this->baseLayout . '.phtml') ){
+            require __DIR__ . '/../App/Views/' . $this->baseLayout . '.phtml';
+        } else {
+            echo 'Erro: arquivo de layout base não existe.';
         }
     }
 }
