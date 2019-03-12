@@ -7,6 +7,7 @@ abstract class BaseController
     protected $view;
     private $viewPath;
     private $baseLayout;
+    private $pageTitle = null;
 
     public function __construct()
     {
@@ -48,5 +49,10 @@ abstract class BaseController
         } else {
             echo 'Erro: arquivo de layout base não existe.';
         }
+    }
+    
+    protected function setPageTitle($strPageTitle)
+    {
+        $this->pageTitle = $strPageTitle;
     }
 }
