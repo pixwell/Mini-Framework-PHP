@@ -2,14 +2,10 @@
 
 namespace App\Controllers;
 
-class HomeController
+use Core\BaseController;
+
+class HomeController extends BaseController
 {
-    private $view;
-    
-    public function __construct() {
-        $this->view = new \stdClass();
-    }
-    
     public function index()
     {
         $this->view->nome = 'Fulano';
