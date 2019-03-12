@@ -4,8 +4,15 @@ namespace App\Controllers;
 
 class HomeController
 {
+    private $view;
+    
+    public function __construct() {
+        $this->view = new \stdClass();
+    }
+    
     public function index()
     {
-        echo 'Home Controller, Action index';
+        $this->view->nome = 'Fulano';
+        require __DIR__ . '/../views/home/index.phtml';
     }
 }
