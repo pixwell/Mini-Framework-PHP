@@ -9,7 +9,7 @@ namespace Core;
  */
 class Database {
             
-    public function getDatabase(){
+    public function connDB(){
         $conf = include_once __DIR__ . '/../App/database.php';
         if( $conf['driver'] == 'sqlite' ){
             $sqliteDBFile = include_once __DIR__ . '/../Storage/database/' . $conf['sqlite']['host'];
