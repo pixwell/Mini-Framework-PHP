@@ -1,3 +1,13 @@
 <div class="container">
-    <h2>Lista de posts</h2>
+    <h2 class="mb-4">Lista de posts</h2>
+    
+    <div class="row">
+    <?php foreach ($this->view->posts as $post) { ?>    
+        <div class="col-lg-4">
+            <h4 class="card-title"><?php echo $post->title ?></h4>
+            <?php echo $post->content ?>
+            <a href="#" class="btn btn-info">Saiba Mais</a>
+        </div>
+    <?php } ?>
+    </div>
 </div>
