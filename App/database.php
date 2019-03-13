@@ -5,7 +5,7 @@ return [
      * Options: mysql, sqlite
      */
     
-    'driver' => 'sqlite',
+    'driver' => 'mysql',
     
     'sqlite' => [
         'host' => 'database.db'
