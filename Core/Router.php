@@ -59,7 +59,8 @@ class Router
                 $route[0] = implode($routeArray, '/');
             }
             $url = empty($urlArray) ? '/' : implode($urlArray, '/');
-                                    
+            $found = false;
+            
             if ($url == $route[0]) {
                 $found = true;
                 $controller = $route[1];
