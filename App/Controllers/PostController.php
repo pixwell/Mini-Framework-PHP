@@ -7,10 +7,15 @@ use Core\Database;
 
 class PostController
 {
+    private $postModel;
+    
+    public function __construct() {
+        $this->postModel = new Post();
+    }
+
     public function index()
     {
-        $model = new Post(Database::connDB());
-        $posts = $model->all();
+        $posts = $this->postModel->all();
         var_dump($posts);
     }
     
