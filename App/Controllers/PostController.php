@@ -3,20 +3,22 @@
 namespace App\Controllers;
 
 use App\Models\Post;
-use Core\Database;
+use Core\BaseController;
 
-class PostController
+class PostController extends BaseController
 {
     private $postModel;
     
     public function __construct() {
         $this->postModel = new Post();
+        $this->view = new \stdClass;
     }
 
     public function index()
     {
-        $posts = $this->postModel->all();
-        var_dump($posts);
+        $this->setPageTitle('Posts');
+        $this->view->posts = $this->postModel->all();
+        $this->renderView('posts/index', 'layout');
     }
     
     public function show($id, $request)
