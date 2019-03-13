@@ -3,14 +3,15 @@
 namespace Core;
 
 use PDO;
+use Core\Database;
 
 abstract class BaseModel {
     private $pdoConn;
     protected $table;
     
-    public function __construct(PDO $pdoObj)
+    public function __construct()
     {
-        $this->pdoConn = $pdoObj;
+        $this->pdoConn = Database::connDB();
     }
     
     public function all()
