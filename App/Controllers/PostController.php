@@ -2,11 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Models\Post;
+use Core\Database;
+
 class PostController
 {
     public function index()
     {
-        echo 'Post Controller, Action index';
+        $model = new Post(Database::connDB());
+        $posts = $model->all();
+        var_dump($posts);
     }
     
     public function show($id, $request)
