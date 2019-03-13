@@ -85,7 +85,7 @@ class Router
                     $dispatcher->$action($this->getRequest());
             }
         } else {
-            echo 'Página não encontrada';
+            Container::pageNotFound();
         }
     }
     
