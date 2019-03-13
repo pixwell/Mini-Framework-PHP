@@ -56,7 +56,7 @@ abstract class BaseController
         $this->pageTitle = $strPageTitle;
     }
     
-    protected function getPageTitle($separator)
+    protected function getPageTitle($separator = null)
     {
         if($separator){
             echo $this->pageTitle . ' ' . $separator . ' ';
