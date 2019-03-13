@@ -3,7 +3,7 @@
 namespace Core;
 
 /**
- * Manipulacao do banco de dados
+ * Conexao com o banco de dados
  *
  * @author pixwell
  */
