@@ -19,11 +19,33 @@ class Database {
             try{
                 $pdo = new \PDO($sqliteDNS);
                 //Tipo de erro
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                 //Retornar um objeto nas consultas
-                $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+                $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
                 return $pdo;
             }catch( \PDOException $e ){
+                echo $e->getMessage();
+            }
+        } elseif( $conf['driver'] == 'mysql' ){
+            
+            $host = $conf['mysql']['host'];
+            $database = $conf['mysql']['database'];
+            $charset = $conf['mysql']['charset'];
+            $collation = $conf['mysql']['collation'];
+            $user = $conf['mysql']['user'];
+            $pass = $conf['mysql']['pass'];
+            
+            //Tentar conectar
+            try {
+                $pdo = new \PDO( 'mysql:host=' . $host . ';dbname=' . $database . ';charset=' . $charset, $user, $pass );
+                //Tipo de erro
+                $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+                //Charset e collation do banco de dados
+                $pdo->setAttribute(\PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES '$charset' COLLATE '$collation'");
+                //Retornar um objeto nas consultas
+                $pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_OBJ);
+                return $pdo;
+            } catch (\PDOException $e) {
                 echo $e->getMessage();
             }
         }
