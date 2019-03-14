@@ -33,4 +33,9 @@ class PostController extends BaseController
         $this->setPageTitle('Criar post');
         $this->renderView('posts/create-form', 'layout');
     }
+    
+    public function store($request)
+    {
+        print_r($request->post);
+    }
 }
