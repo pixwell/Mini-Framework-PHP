@@ -11,7 +11,7 @@ return [
     //[Rota, controller@ation]
     ['/', 'HomeController@index'],
     ['/posts', 'PostController@index'],
-    ['/posts/{id}/show', 'PostController@show'],
-    ['/posts/create', 'PostController@create']
+    ['/post/{id}/show', 'PostController@show'],
+    ['/post/create', 'PostController@create']
 ];
 
