@@ -12,6 +12,6 @@ return [
     ['/', 'HomeController@index'],
     ['/posts', 'PostController@index'],
     ['/posts/{id}/show', 'PostController@show'],
-    ['/{nome}/{id}', 'PerfilController@index'],
+    ['/posts/create', 'PostController@create']
 ];
 
