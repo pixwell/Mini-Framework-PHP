@@ -27,4 +27,10 @@ class PostController extends BaseController
         $this->setPageTitle($this->view->posts[0]->title);
         $this->renderView('posts/single', 'layout');
     }
+    
+    public function create()
+    {
+        $this->setPageTitle('Criar post');
+        $this->renderView('posts/create-form', 'layout');
+    }
 }
