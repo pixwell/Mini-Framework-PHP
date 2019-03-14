@@ -23,4 +23,20 @@ abstract class BaseModel {
         $stmt->closeCursor();
         return $result;
     }
+    
+    /**
+     * Pesquisar registro atraves do ID
+     * @param integer $id
+     * @return obj
+     */
+    public function find($id)
+    {
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE id=:id';
+        $stmt = $this->pdoConn->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        $stmt->closeCursor();
+        return $result;
+    }
 }
