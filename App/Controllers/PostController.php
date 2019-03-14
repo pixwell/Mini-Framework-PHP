@@ -21,11 +21,10 @@ class PostController extends BaseController
         $this->renderView('posts/index', 'layout');
     }
     
-    public function show($id, $request)
-    {
-        echo 'Post ' . $id;
-        echo '<pre>';
-        print_r($request);
-        echo '</pre>';
+    public function show($id)
+    {        
+        $this->view->posts = $this->postModel->find($id);
+        $this->setPageTitle($this->view->posts[0]->title);
+        $this->renderView('posts/single', 'layout');
     }
 }
