@@ -4,7 +4,7 @@
     <div class="row">
     <?php foreach ($this->view->posts as $post) { ?>    
         <div class="col-lg-4">
-            <h4 class="card-title"><?php echo $post->title ?></h4>
+            <h4 class="card-title"><a href="/posts/<?php echo $post->id ?>/show"><?php echo $post->title ?></a></h4>
             <?php echo $post->content ?>
             <a href="#" class="btn btn-info">Saiba Mais</a>
         </div>
